@@ -20,16 +20,16 @@ public class Card {
 
     @Column(name = "count", unique = false)
     private int count;          //보유
-
+    
     @Column(name = "awake", unique = false)
     private int awake;          //각성수치
     
     @Column(name = "grade", unique = false)
     private String grade;       //카드 등급
-
+    
     @Column(name = "getCard", unique = false)
     private boolean getCard;    //카드 획득 유무
-
+    
     @Column(name = "path", unique = false)
     private String path;        //카드 이미지 경로
 

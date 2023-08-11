@@ -15,7 +15,7 @@ public class Card {
     @Column(name = "card_id", unique = true)
     private Long cardId;        //카드 pk
 
-    @Column(name = "name", unique = false)
+    @Column(name = "name", unique = true)
     private String name;        //카드이름
 
     @Column(name = "count", unique = false)

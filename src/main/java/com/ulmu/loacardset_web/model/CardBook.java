@@ -12,23 +12,23 @@ public class CardBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cardBook_id", unique = true)
-    private Long cardBookId;
+    private Long cardBookId;        //카드 도감 id
 
     @Column(name = "name", unique = true)
-    private String name;
+    private String name;            //카드 도감 이름
 
     @Column(name = "statValue", unique = false)
-    private int statValue;
+    private int statValue;          //카드 도감 스탯 증가량
 
     @Column(name = "statName", unique = false)
-    private String statName;
+    private String statName;        //카드 도감 스탯 종류
 
     @Column(name = "cardIds", unique = false)
-    private String cardIds;
+    private String cardIds;         //카드 도감에 포함된 카드 id들
 
     @Column(name = "extraDmgValues", unique = false)
-    private String extraDmgValues;
+    private String extraDmgValues;  //카드 도감 추가피해 값
 
     @Column(name = "extraDmgName", unique = false)
-    private String extraDmgName;
+    private String extraDmgName;    //카드 도감 추가 데미지 종류
 }

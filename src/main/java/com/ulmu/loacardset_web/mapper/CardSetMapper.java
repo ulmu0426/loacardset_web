@@ -14,6 +14,7 @@ public class CardSetMapper {
         cardSetDto.setName(cardSet.getName());
         cardSetDto.setCardIds(stringToLongList(cardSet.getCardIds()));
         cardSetDto.setBonusValues(stringToStringList(cardSet.getBonusValues()));
+        cardSetDto.setFavorite(cardSet.getFavorite());
 
         return cardSetDto;
     }
@@ -42,6 +43,7 @@ public class CardSetMapper {
         cardSet.setName(cardSetDto.getName());
         cardSet.setCardIds(longListToString(cardSetDto.getCardIds()));
         cardSet.setBonusValues(stringListToString(cardSetDto.getBonusValues()));
+        cardSet.setFavorite(cardSetDto.getFavorite());
 
         return cardSet;
     }

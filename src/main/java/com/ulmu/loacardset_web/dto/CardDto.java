@@ -16,7 +16,7 @@ public class CardDto {
 
     private String grade;       //카드 등급
 
-    private boolean getCard;    //카드 획득 유무
+    private boolean checked;    //카드 획득 유무
 
     private String path;        //카드 이미지 경로
 }

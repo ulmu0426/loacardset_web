@@ -11,7 +11,7 @@ public class CardMapper {
         cardDto.setCount(card.getCount());
         cardDto.setAwake(card.getAwake());
         cardDto.setGrade(card.getGrade());
-        cardDto.setGetCard(card.isGetCard());
+        cardDto.setChecked(card.isChecked());
         cardDto.setPath(card.getPath());
 
         return cardDto;
@@ -24,7 +24,7 @@ public class CardMapper {
         card.setCount(cardDto.getCount());
         card.setAwake(cardDto.getAwake());
         card.setGrade(cardDto.getGrade());
-        card.setGetCard(cardDto.isGetCard());
+        card.setChecked(cardDto.isChecked());
         card.setPath(cardDto.getPath());
 
         return card;

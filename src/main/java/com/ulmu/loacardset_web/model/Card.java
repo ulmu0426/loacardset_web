@@ -2,7 +2,6 @@ package com.ulmu.loacardset_web.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -28,7 +27,7 @@ public class Card {
     private String grade;       //카드 등급
     
     @Column(name = "getCard", unique = false)
-    private boolean getCard;    //카드 획득 유무
+    private boolean checked;    //카드 획득 유무
     
     @Column(name = "path", unique = false)
     private String path;        //카드 이미지 경로
@@ -36,6 +35,6 @@ public class Card {
     public Card() {     //보유량, 각성도, 획득유무 기본값 없음
         this.count = 0;
         this.awake = 0;
-        this.getCard = false;
+        this.checked = false;
     }
 }

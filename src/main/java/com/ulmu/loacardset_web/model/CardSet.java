@@ -22,4 +22,7 @@ public class CardSet {
 
     @Column(name = "bonusValues", unique = false)
     private String bonusValues;     //세트 효과
+
+    @Column(name = "favorite", unique = false)
+    private Boolean favorite;       //카드세트 즐겨찾기
 }

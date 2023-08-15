@@ -17,6 +17,9 @@ public class CardService {
     private CardRepository cardRepository;
 
     public List<CardDto> getCardList(String howToSort) throws IllegalAccessException {
+        /**
+         * 요청한 정렬 순서에 따라 카드 목록 CardDto 형태로 반환
+         */
         List<Card> cards;
         if (Objects.equals(howToSort, "byName")) {
             cards = cardRepository.findAllOrderByNameDesc(howToSort);
@@ -28,5 +31,23 @@ public class CardService {
             throw new IllegalAccessException("정렬 기준을 알 수 없습니다.");
         }
         return CardMapper.convertToCardDtoList(cards);
+    }
+
+    public List<CardDto> updateCardList(List<CardDto> cardDtos) {
+        /**
+         * 카드 목록을 수정후 수정된 카드 목록 CardDto 형태로 반환
+         */
+        for (CardDto cardDto : cardDtos){
+            Optional<Card> res = cardRepository.findById(cardDto.getCardId());
+            if(res.isEmpty()){
+                continue;
+            }
+            Card tempCard = res.get();
+            tempCard.setAwake(cardDto.getAwake());
+            tempCard.setCount(cardDto.getCount());
+            tempCard.setChecked((tempCard.getAwake() > 0) || (tempCard.getCount() > 0));
+            this.cardRepository.save(tempCard);
+        }
+        return CardMapper.convertToCardDtoList(cardRepository.findAllOrderByCardIdDesc("byId"));
     }
 }

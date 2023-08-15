@@ -20,4 +20,10 @@ public class CardController {
         List<CardDto> cardDtos = cardService.getCardList(sort);
         return new ResponseEntity<>(cardDtos, HttpStatus.OK);
     }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<List<CardDto>> putCardList(@RequestBody List<CardDto> cardDtos) {
+        List<CardDto> cardDtoList = cardService.updateCardList(cardDtos);
+        return new ResponseEntity<>(cardDtoList, HttpStatus.OK);
+    }
 }

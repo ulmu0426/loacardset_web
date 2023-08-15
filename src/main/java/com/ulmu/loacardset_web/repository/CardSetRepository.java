@@ -11,7 +11,7 @@ public interface CardSetRepository extends JpaRepository<CardSet, Long> {
     //카드세트 정렬
     List<CardSet> findAllOrderByCardSetIdDesc(String keyword);     //id순 정렬 내림차순
     List<CardSet> findAllOrderByNameDesc(String keyword);       //이름순 정렬 내림차순
-    List<CardSet> findAllOrderByFavoriteAsc(String keyword);       //즐겨찾기순 정렬 내림차순
+    List<CardSet> findAllOrderByFavoriteDesc(String keyword);       //즐겨찾기순 정렬 내림차순
 
     //카드 세트 검색 결과 정렬
     List<CardSet> findByNameContainingOrderByNameDesc(String name); //이름순 정렬 내림차순

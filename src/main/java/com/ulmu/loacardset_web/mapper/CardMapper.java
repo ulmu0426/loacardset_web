@@ -3,6 +3,12 @@ package com.ulmu.loacardset_web.mapper;
 import com.ulmu.loacardset_web.dto.CardDto;
 import com.ulmu.loacardset_web.model.Card;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
+
 public class CardMapper {
     public static CardDto convertToCardDto(Card card){
         CardDto cardDto = new CardDto();
@@ -28,5 +34,17 @@ public class CardMapper {
         card.setPath(cardDto.getPath());
 
         return card;
+    }
+
+    public static List<CardDto> convertToCardDtoList(List<Card> cards) {
+        return cards.stream()
+                .map(CardMapper::convertToCardDto)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Card> convertToCardModelList(List<CardDto> cardDtos) {
+        return cardDtos.stream()
+                .map(CardMapper::convertToCardModel)
+                .collect(Collectors.toList());
     }
 }

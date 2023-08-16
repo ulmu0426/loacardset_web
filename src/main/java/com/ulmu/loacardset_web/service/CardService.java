@@ -18,7 +18,7 @@ public class CardService {
 
     public List<CardDto> getCardList(String howToSort) throws IllegalAccessException {
         /**
-         * 요청한 정렬 순서에 따라 카드 목록 CardDto 형태로 반환
+         * 요청한 정렬 순서에 따라 CardDto 목록 형태로 반환
          */
         List<Card> cards;
         if (Objects.equals(howToSort, "byName")) {
@@ -35,7 +35,7 @@ public class CardService {
 
     public List<CardDto> updateCardList(List<CardDto> cardDtos) {
         /**
-         * 카드 목록을 수정후 수정된 카드 목록 CardDto 형태로 반환
+         * 카드 목록을 수정후 수정된 CardDto 목록 형태로 반환
          */
         for (CardDto cardDto : cardDtos){
             Optional<Card> res = cardRepository.findById(cardDto.getCardId());
@@ -49,5 +49,23 @@ public class CardService {
             this.cardRepository.save(tempCard);
         }
         return CardMapper.convertToCardDtoList(cardRepository.findAllOrderByCardIdDesc("byId"));
+    }
+
+    public List<CardDto> getCardListAsGrade(String howToSort, String grade) throws IllegalAccessException {
+        /**
+         * 파라미터로 받은 등급에 해당하는 CardDto 목록 형태로 반환
+         */
+        List<Card> cards;
+        if (Objects.equals(howToSort, "byName")) {
+            cards = cardRepository.findAllByGradeOrderByNameDesc(grade);
+        } else if (Objects.equals(howToSort, "byId")) {
+            cards = cardRepository.findAllByGradeOrderByCardIdDesc(grade);
+        } else if (Objects.equals(howToSort, "byGetCard")) {
+            cards = cardRepository.findAllByGradeOrderByGetCardDesc(grade);
+        } else {
+            throw new IllegalAccessException("정렬 기준을 알 수 없습니다.");
+        }
+
+        return CardMapper.convertToCardDtoList(cards);
     }
 }
